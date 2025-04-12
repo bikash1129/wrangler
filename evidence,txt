@@ -1,0 +1,70 @@
+aggregate-stats Directive
+
+
+Example 1: Basic Aggregation
+
+Recipe:
+  aggregate-stats :size :time 'total_size_mb' 'total_time_sec';
+
+Input:
+  | size   | time   |
+  |--------|--------|
+  | 10KB   | 500ms  |
+  | 5MB    | 2s     |
+  | 1.5MB  | 1.2s   |
+
+Output:
+  | total_size_mb | total_time_sec |
+  |---------------|----------------|
+  | 6.50977       | 3.7            |
+
+
+Example 2: Mixed Units
+
+Input:
+  | size   | time   |
+  |--------|--------|
+  | 1024B  | 1000ms |
+  | 1MB    | 1s     |
+  | 2GB    | 5min   |
+
+Output:
+  | total_size_mb | total_time_sec |
+  |---------------|----------------|
+  | 2049.00098    | 301            |
+
+
+Example 3: Empty Input
+
+Input:
+  (no rows)
+
+Output:
+  | total_size_mb | total_time_sec |
+  |---------------|----------------|
+  | 0.0           | 0.0            |
+
+
+Example 4: Invalid Input
+
+Input:
+  | size   | time |
+  |--------|------|
+  | hello  | 2s   |
+
+Output:
+  Exception: Unable to parse byte value "hello"
+
+
+Unit Support
+
+Byte units:
+  - B, KB, MB, GB
+
+Time units:
+  - ms, s, min, h
+
+Behavior:
+  - Operates as an aggregator across rows
+  - Returns only one final output row with total values
+  - Automatically parses and converts units to MB and seconds

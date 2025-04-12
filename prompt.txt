@@ -1,0 +1,108 @@
+ 1. Grammar Modification (ANTLR)
+Prompt:
+
+what to do ?
+
+You uploaded the assignment and shared the original Directives.g4 file.
+I walked you through:
+
+Adding BYTE_SIZE and TIME_DURATION lexer rules
+
+Adding them into the value parser rule
+
+Creating helper fragments BYTE_UNIT, TIME_UNIT
+
+Regenerating ANTLR lexer/parser via mvn compile
+
+ 2. API Update (Token.java)
+Prompt:
+
+give me the token.java code as you tell
+give me updated code
+where is timeduration and bytesize in the token.java
+
+
+ 3. Visitor Updates
+Prompt:
+
+next task is
+there is no this kind of directory or file
+i got this... now what next?
+
+→ You searched for DirectivesBaseVisitor
+I helped you locate RecipeVisitor.java, then:
+
+Showed you how to modify visitValue() to support ByteSize and TimeDuration
+
+Helped create visitByteSize() and visitTimeDuration() if required
+
+ 4. Directive Implementation
+Prompt:
+
+next task is
+there is no directives directory
+
+AggregateStats.java in executor.directives
+
+Parsed byte/time values using string suffixes (KB, ms, etc.)
+
+Implemented initialize, execute, and finalize methods
+
+ 5. Testing Setup
+Prompt:
+
+i have some confusion
+i forgot where i have this file
+i have totally confused so lets do this task again from beginning
+
+ You were guided through:
+
+Creating AggregateStatsTest.java in src/test/java/...
+
+Writing 3 tests:
+
+ Basic functionality
+
+ Empty input
+
+ Invalid byte value
+
+ 6. Grammar Parser Tests
+Prompt:
+
+this is my grammarBasedparserTest.java now changes here and give me full code
+
+ I helped add:
+
+Valid syntax test with BYTE_SIZE/TIME_DURATION
+
+Failing test with bad syntax (123XY)
+
+ 7. README.md Changes
+Prompt:
+
+what should i write on readme.md file according to the chnages you suggested
+write the full readme.md file with chnages
+
+ I updated your README.md with:
+
+New aggregate-stats section (syntax, arguments, example)
+
+Example table input/output
+
+Summary under "Available Directives"
+
+ Final Outcome
+You successfully implemented:
+
+Lexer/parser updates
+
+Token API extensions
+
+Visitor class logic
+
+A new working directive
+
+5+ meaningful tests
+
+Updated documentation
